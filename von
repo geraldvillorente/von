@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+#
+# @file
+#   Git projects updater.
+#
+# @author
+#   Gerald Villorente, 2014
+#
+# @param
+#   The repositories directory.
+#
+# @description
+#   Update all forked projects at once.
+#
+
+# Target directory.
+# Validate the first parameter.
+if [ -z "$1" ]; then
+  echo "Please specify your Git directory."
+  exit
+else
+  if [ ! -d "$1" ]; then
+    echo "The path you specified does not exist."
+    exit
+  else
+    REPO_DIR=$1
+  fi
+fi
+
+# Navigate to the Repositories directory.
+# $REPO_DIR is the parent directory of all git projects.
+cd $REPO_DIR
+
+# Loop through all directories and update.
+for d in */ ; do
+  case "$d" in
+    *forked*)
+      echo ""
+      echo "Updating $d repository..."
+      cd $d
+      git fetch source
+      git checkout master
+      git merge source/master
+      git push origin --all
+      echo "$d repository is up-to-date."
+      cd ..
+      ;;
+  esac
+done
+echo ""
+echo "All projects are now updated."
