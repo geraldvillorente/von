@@ -4,7 +4,7 @@
 
 Von allows you to update all your forked projects at once.
 
-** Requirements
+**Requirements**
 
 This little script requires some extra steps in order to work.
 
@@ -16,7 +16,7 @@ To add your upstream-
 
 `git remote add [source] [upstream url]`
 
-** Usage
+**Usage**
 
 This script requires you to put your Git root directory as parameter.
 
