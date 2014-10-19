@@ -14,7 +14,7 @@ This little script requires some extra steps in order to work.
 
 To add your upstream-
 
-`git remote add [source] [upstream url]`
+`git remote add source [upstream url]`
 
 **Usage**
 
